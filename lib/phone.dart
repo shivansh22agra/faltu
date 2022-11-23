@@ -1,9 +1,7 @@
-import 'dart:ui';
+
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class MyPhone extends StatefulWidget {
   const MyPhone({super.key});
@@ -13,6 +11,7 @@ class MyPhone extends StatefulWidget {
 }
 
 class _MyPhoneState extends State<MyPhone> {
+  // ignore: non_constant_identifier_names
   TextEditingController CountryCode = TextEditingController();
   var phone = " ";
   @override
@@ -26,24 +25,24 @@ class _MyPhoneState extends State<MyPhone> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(left: 25, right: 25),
+        margin: const EdgeInsets.only(left: 25, right: 25),
         alignment: Alignment.center,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/otpvector.jpg'),
-              SizedBox(
+            const  SizedBox(
                 height: 10.0,
               ),
-              Text(
+           const   Text(
                 "Phone Verification",
                 style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+            const  SizedBox(
                 height: 10.0,
               ),
-              Text(
+            const  Text(
                 "We need to register your phone before getting started! ",
                 style: TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,
@@ -56,7 +55,7 @@ class _MyPhoneState extends State<MyPhone> {
                 ),
                 child: Row(
                   children: [
-                    SizedBox(
+                  const  SizedBox(
                       width: 10,
                     ),
                     SizedBox(
@@ -66,11 +65,11 @@ class _MyPhoneState extends State<MyPhone> {
                         decoration: InputDecoration(border: InputBorder.none),
                       ),
                     ),
-                    Text(
+               const     Text(
                       "|",
                       style: TextStyle(fontSize: 40, color: Colors.grey),
                     ),
-                    SizedBox(
+                const    SizedBox(
                       width: 10,
                     ),
                     Expanded(
@@ -79,14 +78,14 @@ class _MyPhoneState extends State<MyPhone> {
                         onChanged: (value) {
                           phone = value;
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             border: InputBorder.none, hintText: 'Phone'),
                       ),
                     )
                   ],
                 ),
               ),
-              SizedBox(
+            const  SizedBox(
                 height: 20.0,
               ),
               SizedBox(
@@ -94,19 +93,20 @@ class _MyPhoneState extends State<MyPhone> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () async {
-                    await FirebaseAuth.instance.verifyPhoneNumber(
-                      phoneNumber: '${CountryCode.text + phone}',
-                      verificationCompleted:
-                          (PhoneAuthCredential credential) {},
-                      verificationFailed: (FirebaseAuthException e) {},
-                      codeSent: (String verificationId, int? resendToken) {
-                        MyPhone.verify = verificationId;
-                        Navigator.pushNamed(context, 'otp');
-                      },
-                      codeAutoRetrievalTimeout: (String verificationId) {},
-                    );
+                    // await FirebaseAuth.instance.verifyPhoneNumber(
+                    //   phoneNumber: CountryCode.text + phone,
+                    //   verificationCompleted:
+                    //       (PhoneAuthCredential credential) {},
+                    //   verificationFailed: (FirebaseAuthException e) {},
+                    //   codeSent: (String verificationId, int? resendToken) {
+                    //     MyPhone.verify = verificationId;
+                    //     Navigator.pushNamed(context, 'otp');
+                    //   },
+                    //   codeAutoRetrievalTimeout: (String verificationId) {},
+                    // );
+                     Navigator.pushNamed(context, 'otp');
                   },
-                  child: Text("Send the code"),
+                  child:  Text("Send the code"),
                   style: ElevatedButton.styleFrom(
                       primary: Colors.green.shade600,
                       shape: RoundedRectangleBorder(
